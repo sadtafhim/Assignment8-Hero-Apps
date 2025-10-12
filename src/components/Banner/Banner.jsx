@@ -14,11 +14,11 @@ const Banner = () => {
           </span>{" "}
           Apps
         </h1>
-        <p>
+        <p className="text-[#627382]">
           At HERO.IO, we craft innovative apps designed to make everyday life
           simpler, smarter, and more exciting.
         </p>
-        <p>
+        <p className="text-[#627382]">
           Our goal is to turn your ideas into digital experiences that truly
           make an impact.
         </p>
