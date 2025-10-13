@@ -1,8 +1,19 @@
-import React from "react";
-import { useLoaderData } from "react-router";
+import React, { useEffect, useState } from "react";
 import AppBlock from "../../components/AppBlock/AppBlock";
+import { Suspense } from "react";
+import { Circles } from "react-loader-spinner";
 const Apps = () => {
-  const appData = useLoaderData();
+  const [appData, setAppData] = useState([]);
+
+  useEffect(() => {
+    fetch("appData.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setAppData(data);
+      });
+  }, []);
+
+  console.log(appData);
   return (
     <div>
       <div className="mt-20 mb-10">
@@ -37,12 +48,25 @@ const Apps = () => {
           <input type="search" required placeholder="Search" />
         </label>
       </div>
-      <div className="max-w-[1440px] grid grid-cols-2 md:grid-cols-4 mx-auto gap-5 mb-20">
-        {appData.map((app) => (
-          <AppBlock key={app.id} app={app}></AppBlock>
-        ))}
-      </div>
-      ;
+      <Suspense
+        fallback={
+          <Circles
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="circles-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        }
+      >
+        <div className="max-w-[1440px] grid grid-cols-2 md:grid-cols-4 mx-auto gap-5 mb-20">
+          {appData.map((app) => (
+            <AppBlock key={app.id} app={app}></AppBlock>
+          ))}
+        </div>
+      </Suspense>
     </div>
   );
 };

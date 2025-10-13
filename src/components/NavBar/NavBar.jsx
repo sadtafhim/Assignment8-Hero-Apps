@@ -60,7 +60,7 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="https://github.com/sadtafhim">
+          <Link to="https://github.com/sadtafhim/Assignment8-Hero-Apps">
             <button className="btn border border-[#632EE3] text-white bg-gradient-to-r from-[#632EE3] to-[#9F62F2]">
               <FaGithub /> Contribute
             </button>

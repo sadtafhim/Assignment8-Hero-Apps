@@ -23,13 +23,13 @@ const Banner = () => {
           make an impact.
         </p>
         <div className="flex gap-2">
-          <Link>
+          <Link to={"https://play.google.com/store/games?hl=en&pli=1"}>
             <button className="btn bg-white font-semibold text-xl">
               <FaGooglePlay />
               Google Play
             </button>
           </Link>
-          <Link>
+          <Link to="https://www.apple.com/app-store/">
             <button className="btn bg-white font-semibold text-xl">
               <FaAppStoreIos />
               App Store
