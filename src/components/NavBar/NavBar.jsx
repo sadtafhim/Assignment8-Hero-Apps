@@ -13,7 +13,7 @@ const NavBar = () => {
       <NavLink to="/Apps">
         <li className="m-2 font-medium">Apps</li>
       </NavLink>
-      <NavLink to="/Installations">
+      <NavLink to="/Installation">
         <li className="m-2 font-medium">Installation</li>
       </NavLink>
     </>
