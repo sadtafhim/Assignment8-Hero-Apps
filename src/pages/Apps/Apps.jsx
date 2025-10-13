@@ -39,7 +39,7 @@ const Apps = () => {
       </div>
       <div className="max-w-[1440px] grid grid-cols-2 md:grid-cols-4 mx-auto gap-5 mb-20">
         {appData.map((app) => (
-          <AppBlock app={app}></AppBlock>
+          <AppBlock key={app.id} app={app}></AppBlock>
         ))}
       </div>
       ;

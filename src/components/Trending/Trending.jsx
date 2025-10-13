@@ -1,7 +1,7 @@
 import React from "react";
 import { trendingAppSorter } from "../../utilities/trendingAppSorter";
 import AppBlock from "../AppBlock/AppBlock";
-
+import { Link } from "react-router";
 const Trending = ({ data }) => {
   const apps = trendingAppSorter(data);
   console.log(apps);
@@ -17,13 +17,15 @@ const Trending = ({ data }) => {
       </div>
       <div className="max-w-[1440px] grid grid-cols-2 md:grid-cols-4 mx-auto gap-5">
         {apps.map((app) => (
-          <AppBlock app={app}></AppBlock>
+          <AppBlock key={app.id} app={app}></AppBlock>
         ))}
       </div>
       <div className="flex justify-center">
-        <button className="btn btn-primary bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white">
-          Show All
-        </button>
+        <Link to="/Apps">
+          <button className="btn btn-primary bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white">
+            Show All
+          </button>
+        </Link>
       </div>
     </div>
   );
