@@ -100,9 +100,15 @@ const Apps = () => {
         }
       >
         <div className="max-w-[1440px] grid grid-cols-2 md:grid-cols-4 mx-auto gap-5 mb-20">
-          {dataset && dataset.length > 0
-            ? dataset.map((app) => <AppBlock key={app.id} app={app} />)
-            : appData.map((app) => <AppBlock key={app.id} app={app} />)}
+          {input.length > 0 && dataset.length === 0 ? (
+            <h1 className="col-span-2 md:col-span-4 text-center font-bold text-6xl my-10">
+              No App Found
+            </h1>
+          ) : dataset && dataset.length > 0 ? (
+            dataset.map((app) => <AppBlock key={app.id} app={app} />)
+          ) : (
+            appData.map((app) => <AppBlock key={app.id} app={app} />)
+          )}
         </div>
       </Suspense>
     </div>

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useLoaderData } from "react-router";
 import { FiDownload } from "react-icons/fi";
-import { FaStar } from "react-icons/fa";
-import { FaRegThumbsUp } from "react-icons/fa";
+import { FaStar, FaRegThumbsUp } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import { addAppToDB, getInstalledApps } from "../../utilities/addToDB";
 import {
   BarChart,
   Bar,
@@ -14,12 +15,14 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+
 const AppData = () => {
+  const installed = () => toast("App Installed");
   const { appId } = useParams();
   const intId = parseInt(appId);
   const data = useLoaderData();
+
   const singleApp = data.find((app) => app.id === intId);
-  console.log(singleApp);
   const {
     id,
     title,
@@ -34,10 +37,24 @@ const AppData = () => {
   } = singleApp;
 
   const ratingsReversed = [...ratings].reverse();
+  const [installedStatus, setInstalledStatus] = useState(false);
+  const [buttonText, setButtonText] = useState(`Install Now (${size}MB)`);
 
-  console.log(ratingsReversed);
+  useEffect(() => {
+    const datas = getInstalledApps();
+    if (datas.includes(id)) {
+      setInstalledStatus(true);
+      setButtonText("Installed");
+    }
+  }, [id]);
 
-  console.log(ratingsReversed);
+  const installApps = (id) => {
+    addAppToDB(id);
+    installed();
+    setInstalledStatus(true);
+    setButtonText("Installed");
+  };
+
   return (
     <div className="max-w-[1440px] mx-auto my-20">
       <div className="max-w-[1440px] h-[350px] flex gap-10">
@@ -49,6 +66,7 @@ const AppData = () => {
               Developed by <span className="text-[#9F62F2]">{companyName}</span>
             </p>
           </div>
+
           <div className="border-t-2 w-full py-[30px] flex gap-10">
             <div>
               <p className="text-[#54CF68]">
@@ -63,6 +81,7 @@ const AppData = () => {
                   : downloads}
               </h1>
             </div>
+
             <div>
               <p className="mb-4 text-[#FF8811]">
                 <FaStar size={32} />
@@ -70,6 +89,7 @@ const AppData = () => {
               <p>Average Ratings</p>
               <p className="font-extrabold text-[40px]">{ratingAvg}</p>
             </div>
+
             <div>
               <p className="mb-4 text-[#9F62F2]">
                 <FaRegThumbsUp size={32} />
@@ -84,26 +104,29 @@ const AppData = () => {
               </p>
             </div>
           </div>
-          <button className="btn btn-success text-white">
-            Install Now ({size}MB)
+
+          <button
+            disabled={installedStatus}
+            onClick={() => installApps(id)}
+            className="btn btn-success text-white"
+          >
+            {buttonText}
           </button>
+          <ToastContainer />
         </div>
       </div>
-      <div className="h-[430px] border-y-2 mt-5 flex flex-col justify-center items-between ">
+
+      <div className="h-[430px] border-y-2 mt-5 flex flex-col justify-center items-between">
         <h1>Ratings</h1>
         <ResponsiveContainer width="100%" height="90%">
           <BarChart
             layout="vertical"
             data={ratingsReversed}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" /> <YAxis type="category" dataKey="name" />{" "}
+            <XAxis type="number" />
+            <YAxis type="category" dataKey="name" />
             <Tooltip />
             <Legend />
             <Bar
@@ -114,6 +137,7 @@ const AppData = () => {
           </BarChart>
         </ResponsiveContainer>
       </div>
+
       <div>
         <h1 className=" text-2xl font-semibold mb-6 text-[#001931]">
           Description
