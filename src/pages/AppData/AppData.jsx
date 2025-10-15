@@ -57,7 +57,7 @@ const AppData = () => {
 
   return (
     <div className="max-w-[1440px] mx-auto my-20">
-      <div className="max-w-[1440px] h-[350px] flex gap-10">
+      <div className="max-w-[1440px] h-[350px] md:flex gap-10">
         <img className="w-[350px] h-[350px] object-cover" src={image} alt="" />
         <div>
           <div className="h-20 flex flex-col justify-between mb-[30px]">
