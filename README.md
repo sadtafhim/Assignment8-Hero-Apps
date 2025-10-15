@@ -3,33 +3,13 @@
 Hero Apps is a modern React web application built with Vite and Tailwind CSS, designed for fast performance, clean UI, and interactive user experience.
 It features smooth component rendering, toast notifications, dynamic routing, and responsive design powered by modern frontend libraries.
 
+
+
 🚀 Live Demo
 
-(Add your deployed link here if you have one)
+glittering-cajeta-bc13eb.netlify.app
 
-📁 Project Structure
-hero-apps/
-├── public/
-│ ├── \_redirects
-│ ├── appData.json
-│ └── vite.svg
-├── src/
-│ ├── assets/
-│ ├── components/
-│ ├── pages/
-│ ├── Routes/
-│ ├── utilities/
-│ ├── App.css
-│ ├── App.jsx
-│ ├── index.css
-│ └── main.jsx
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package.json
-├── package-lock.json
-├── vite.config.js
-└── README.md
+
 
 ⚙️ Technologies Used
 🧩 Core
@@ -66,6 +46,8 @@ React Refresh Plugin – live reloading
 
 Vite Plugin React – optimized React integration
 
+
+
 🛠️ Setup and Installation
 1️⃣ Clone the repository
 git clone https://github.com/your-username/hero-apps.git
@@ -83,6 +65,8 @@ npm run build
 5️⃣ Preview the production build
 npm run preview
 
+
+
 📦 Scripts Overview
 Command Description
 npm run dev Starts local development server
@@ -90,28 +74,29 @@ npm run build Builds project for production
 npm run preview Previews the production build locally
 npm run lint Runs ESLint for code quality
 
+
+
 🌟 Key Features
 
-🧭 Dynamic Routing: Manage pages and navigation seamlessly
+Dynamic Routing: Manage pages and navigation seamlessly
 
-💾 LocalStorage Integration: Store and retrieve app data persistently
+LocalStorage Integration: Store and retrieve app data persistently
 
-📱 Responsive Design: Works across all devices and screen sizes
+Responsive Design: Works across all devices and screen sizes
 
-🔔 Toast Notifications: User feedback via React Toastify
+Toast Notifications: User feedback via React Toastify
 
-📊 Charts & Analytics: Data visualization using Recharts
+Charts & Analytics: Data visualization using Recharts
 
-⚡ Fast Performance: Powered by Vite and optimized Tailwind builds
+Fast Performance: Powered by Vite and optimized Tailwind builds
 
-📸 Screenshots
 
-(Add screenshots or GIFs of your app UI here)
 
 🤝 Contributing
 
 Pull requests are welcome!
 For major changes, please open an issue first to discuss what you would like to change.
+
 
 🪪 License
 
